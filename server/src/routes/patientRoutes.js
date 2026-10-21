@@ -1,0 +1,10 @@
+import express from "express";
+import { listPatients, createPatient, getPatient, updatePatient } from "../controllers/patientController.js";
+import { protect } from "../middleware/authMiddleware.js";
+const router = express.Router();
+router.use(protect);
+router.get("/", listPatients);
+router.post("/", createPatient);
+router.get("/:id", getPatient);
+router.put("/:id", updatePatient);
+export default router;

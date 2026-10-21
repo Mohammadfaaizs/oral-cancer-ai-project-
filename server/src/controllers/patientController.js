@@ -1,0 +1,12 @@
+import Patient from "../models/Patient.js";
+import OralImage from "../models/OralImage.js";
+import Prediction from "../models/Prediction.js";
+
+const CLINICAL_FIELDS = ["patientCode","name","age","gender","contact","smoking","betelQuid","alcohol","tobaccoUse","hpvInfection","chronicSunExposure","poorOralHygiene","dietFruitsVegetables","familyHistoryOfCancer","compromisedImmuneSystem","oralLesions","unexplainedBleeding","difficultySwallowing","whiteOrRedPatches","clinicalNotes"];
+function canAccess(user, patient) { return user.role === "admin" || String(patient.createdBy) === String(user._id); }
+function pickClinical(body, includeCode=true) { const keys = includeCode ? CLINICAL_FIELDS : CLINICAL_FIELDS.filter(k=>k!=="patientCode"); return Object.fromEntries(Object.entries(body||{}).filter(([k])=>keys.includes(k))); }
+
+export async function listPatients(req,res,next){ try { const {search}=req.query; const filter=search?{$or:[{name:{$regex:search,$options:"i"}},{patientCode:{$regex:search,$options:"i"}}]}:{}; if(req.user.role!=="admin") filter.createdBy=req.user._id; res.json(await Patient.find(filter).sort({createdAt:-1})); }catch(err){next(err)} }
+export async function createPatient(req,res,next){ try { const data=pickClinical(req.body); if(!data.patientCode?.trim()||!data.name?.trim()) return res.status(400).json({message:"patientCode and name are required"}); data.patientCode=data.patientCode.trim(); data.name=data.name.trim(); data.createdBy=req.user._id; res.status(201).json(await Patient.create(data)); }catch(err){next(err)} }
+export async function getPatient(req,res,next){ try { const patient=await Patient.findById(req.params.id); if(!patient)return res.status(404).json({message:"Patient not found"}); if(!canAccess(req.user,patient))return res.status(403).json({message:"You are not authorized to access this patient"}); const [images,predictions]=await Promise.all([OralImage.find({patientId:patient._id}).sort({createdAt:-1}),Prediction.find({patientId:patient._id}).populate("imageId").sort({createdAt:-1})]); res.json({patient,images,predictions}); }catch(err){next(err)} }
+export async function updatePatient(req,res,next){ try { const patient=await Patient.findById(req.params.id); if(!patient)return res.status(404).json({message:"Patient not found"}); if(!canAccess(req.user,patient))return res.status(403).json({message:"You are not authorized to update this patient"}); Object.assign(patient,pickClinical(req.body,false)); await patient.save(); res.json(patient); }catch(err){next(err)} }

@@ -1,0 +1,47 @@
+{
+  "dataset_rows": 84922,
+  "features": [
+    "Age",
+    "Gender",
+    "Tobacco Use",
+    "Alcohol Consumption",
+    "HPV Infection",
+    "Betel Quid Use",
+    "Chronic Sun Exposure",
+    "Poor Oral Hygiene",
+    "Diet (Fruits & Vegetables Intake)",
+    "Family History of Cancer",
+    "Compromised Immune System",
+    "Oral Lesions",
+    "Unexplained Bleeding",
+    "Difficulty Swallowing",
+    "White or Red Patches in Mouth",
+    "Early Diagnosis"
+  ],
+  "excluded_for_leakage_or_post_diagnosis": [
+    "ID",
+    "Tumor Size (cm)",
+    "Cancer Stage",
+    "Treatment Type",
+    "Survival Rate (5-Year, %)",
+    "Cost of Treatment (USD)",
+    "Economic Burden (Lost Workdays per Year)"
+  ],
+  "accuracy": 0.501677951133353,
+  "precision": 0.5003557874762808,
+  "recall_sensitivity": 0.49811097992916176,
+  "f1": 0.4992308602532245,
+  "specificity": 0.5052260716382854,
+  "roc_auc": 0.49980960746401415,
+  "confusion_matrix": [
+    [
+      4302,
+      4213
+    ],
+    [
+      4251,
+      4219
+    ]
+  ],
+  "warning": "Research dataset/model only. Candidate is NOT promoted because internal held-out metrics must be meaningful and this run may indicate no predictive signal; not clinical validation."
+}

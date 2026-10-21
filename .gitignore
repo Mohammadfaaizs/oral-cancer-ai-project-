@@ -1,0 +1,50 @@
+
+# Secrets and environment variables
+.env
+.env.*
+!.env.example
+!**/.env.example
+
+# Dependencies and Python environments
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+ai-service/.venv/
+
+# Build outputs and caches
+dist/
+build/
+.vite/
+.pytest_cache/
+.mypy_cache/
+*.log
+npm-debug.log*
+
+# User uploads and runtime data
+server/uploads/*
+!server/uploads/.gitkeep
+uploads/
+data/
+ai-service/data/
+*.sqlite
+*.db
+
+# AI model files
+ai-service/models/*.keras
+ai-service/models/**/*.keras
+ai-service/models/clinical/reference_candidate_model.joblib
+ai-service/models/explanations/
+!ai-service/models/.gitkeep
+
+# Allow application model files
+!ai-service/models/clinical/model.joblib
+!ai-service/models/image/image_model.pt
+!ai-service/models/image/labels.json
+!ai-service/models/image/metrics.json
+
+# Operating system and editor files
+.DS_Store
+Thumbs.db
+.vscode/
