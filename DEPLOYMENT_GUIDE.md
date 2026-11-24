@@ -38,11 +38,11 @@ python -m venv .venv
 # Install dependencies
 pip install -r requirements.txt
 
-# Start service (Runs on port 6000)
+# Start service (Runs on port 6001)
 python app.py
 
 # ✓ Expected output:
-# Serving on 0.0.0.0:6000
+# Serving on 0.0.0.0:6001
 # Models loaded successfully
 ```
 
@@ -83,7 +83,7 @@ npm run dev
 ```
 Frontend:    http://localhost:5173
 API Server:  http://localhost:5000
-AI Service:  http://localhost:6000
+AI Service:  http://localhost:6001
 
 Login with:
 Email:    admin@example.com
@@ -118,7 +118,7 @@ docker compose down
 ### Services
 - **Frontend:** http://localhost:4173 (served via Vite)
 - **API:** http://localhost:5000
-- **AI Service:** http://localhost:6000
+- **AI Service:** http://localhost:6001
 - **MongoDB:** localhost:27017
 
 ---
@@ -255,7 +255,7 @@ Response: Array of predictions
 
 #### Health Check
 ```bash
-GET http://localhost:6000/health
+GET http://localhost:6001/health
 
 Response:
 {
@@ -268,7 +268,7 @@ Response:
 
 #### Clinical Prediction
 ```bash
-POST http://localhost:6000/predict/clinical
+POST http://localhost:6001/predict/clinical
 Content-Type: application/json
 
 {
@@ -302,7 +302,7 @@ Response:
 
 #### Image Prediction
 ```bash
-POST http://localhost:6000/predict/image
+POST http://localhost:6001/predict/image
 Content-Type: multipart/form-data
 
 Form Data:
@@ -465,7 +465,7 @@ python test_smoke.py     # AI service smoke test
 curl http://localhost:5000/api/health/deep
 
 # Check AI service
-curl http://localhost:6000/health
+curl http://localhost:6001/health
 
 # Check MongoDB
 # Via API health endpoint

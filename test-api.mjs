@@ -10,7 +10,7 @@ async function test() {
     console.log("1. HEALTH CHECKS");
     console.log("-".repeat(50));
     
-    const aiHealth = await fetch("http://127.0.0.1:6000/health").then(r => r.json());
+    const aiHealth = await fetch("http://127.0.0.1:6001/health").then(r => r.json());
     console.log("✓ AI Service:", JSON.stringify(aiHealth, null, 2));
 
     const apiHealth = await fetch(`${BASE_URL}/health`).then(r => r.json());

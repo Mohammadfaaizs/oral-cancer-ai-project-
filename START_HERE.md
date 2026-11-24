@@ -143,7 +143,7 @@ python -m venv .venv
 .\.venv\Scripts\activate
 pip install -r requirements.txt
 python app.py
-# Shows: Serving on 0.0.0.0:6000
+# Shows: Serving on 0.0.0.0:6001
 ```
 
 **Terminal 2: Backend API**
@@ -167,7 +167,7 @@ npm run dev
 ```
 Frontend:  http://localhost:5173
 API:       http://localhost:5000
-AI:        http://localhost:6000
+AI:        http://localhost:6001
 
 Login with:
 Email:    admin@example.com
@@ -226,7 +226,7 @@ Password: admin@example.com
 ## 🔍 WHAT WAS TESTED
 
 ### Services
-- ✅ AI Service (Port 6000) - Image & Clinical models
+- ✅ AI Service (Port 6001) - Image & Clinical models
 - ✅ API Server (Port 5000) - Express + MongoDB
 - ✅ Frontend (Port 5173) - React + Vite
 - ✅ Database (MongoDB) - Atlas connection

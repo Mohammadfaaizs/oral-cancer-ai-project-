@@ -14,7 +14,7 @@
 ## SERVICE STATUS
 
 ```
-┌─ AI SERVICE (Port 6000) ────────────────────────────────────────────────────┐
+┌─ AI SERVICE (Port 6001) ────────────────────────────────────────────────────┐
 │ Status:        ✓ RUNNING                                                    │
 │ Health:        ✓ OK                                                         │
 │ Image Model:   ✓ LOADED (demo-cnn-v1)                                       │

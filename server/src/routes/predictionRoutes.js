@@ -36,7 +36,7 @@ router.post("/analyze", upload.single("image"), async (req, res, next) => {
     const clinicalFields = ["age","gender","smoking","betelQuid","alcohol","tobaccoUse","hpvInfection","chronicSunExposure","poorOralHygiene","dietFruitsVegetables","familyHistoryOfCancer","compromisedImmuneSystem","oralLesions","unexplainedBleeding","difficultySwallowing","whiteOrRedPatches"];
     for (const field of clinicalFields) form.append(field, String(patient[field] ?? "unknown"));
     form.append("earlyDiagnosis", "Unknown");
-    const aiResponse = await fetch(`${process.env.AI_SERVICE_URL || "http://127.0.0.1:6000"}/predict/image`, { method: "POST", headers: form.getHeaders(), body: form, signal: AbortSignal.timeout(Number(process.env.AI_TIMEOUT_MS || 60000)) });
+    const aiResponse = await fetch(`${process.env.AI_SERVICE_URL || "http://127.0.0.1:6001"}/predict/image`, { method: "POST", headers: form.getHeaders(), body: form, signal: AbortSignal.timeout(Number(process.env.AI_TIMEOUT_MS || 60000)) });
     if (!aiResponse.ok) return res.status(502).json({ message: "AI service error", detail: await aiResponse.text() });
     const result = await aiResponse.json();
     const prediction = await Prediction.create({ patientId, imageId: oralImage._id, imagePrediction: result.prediction, classProbabilities: result.classProbabilities, confidence: result.confidence, clinicalPrediction: result.clinicalPrediction, clinicalConfidence: result.clinicalConfidence, risk: result.risk, classification: result.classification || 'medium_risk', safeProbability: result.safeProbability || 0, cancerProbability: result.cancerProbability || 0, modelVersion: result.modelVersion, explanationPath: result.explanationPath || null, createdBy: req.user._id });

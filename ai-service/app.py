@@ -66,4 +66,4 @@ class H(BaseHTTPRequestHandler):
             if not clinical_model:return self.send_json(503,{'message':'Clinical model unavailable'})
             form=multipart(body,ct) if ct.startswith('multipart/form-data') else {}; data={k:v['data'] for k,v in form.items()}; label,conf,ver=clinical_model.predict(data); return self.send_json(200,{'clinicalPrediction':label,'confidence':conf,'modelVersion':ver,'demoModel':True,'warning':'Synthetic demo model; not clinically validated.'})
         self.send_json(404,{'message':'Not found'})
-if __name__=='__main__': ThreadingHTTPServer(('0.0.0.0',int(os.getenv('PORT','6000'))),H).serve_forever()
+if __name__=='__main__': ThreadingHTTPServer(('0.0.0.0',int(os.getenv('PORT','6001'))),H).serve_forever()

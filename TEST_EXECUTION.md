@@ -35,7 +35,7 @@
 
 ### 1. AI Service (Python Flask + PyTorch)
 ```
-✓ Port 6000 accessible
+✓ Port 6001 accessible
 ✓ Both models load (image & clinical)
 ✓ Health endpoint responds
 ✓ Clinical prediction working: 99.9% confidence

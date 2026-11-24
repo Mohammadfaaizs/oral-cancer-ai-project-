@@ -48,7 +48,7 @@ This folder now contains complete testing documentation:
 
 ### Current Status
 ```
-✓ AI Service         Running on port 6000
+✓ AI Service         Running on port 6001
 ✓ API Server         Running on port 5000
 ✓ Frontend           Running on port 5173
 ✓ Database           Connected (MongoDB Atlas)
@@ -61,7 +61,7 @@ This folder now contains complete testing documentation:
 ```
 Frontend:  http://localhost:5173
 API:       http://localhost:5000
-AI:        http://localhost:6000
+AI:        http://localhost:6001
 
 Login:
 Email:     admin@example.com

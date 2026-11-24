@@ -19,7 +19,7 @@ except ImportError:
     import requests
 
 BASE_URL = "http://127.0.0.1:5000/api"
-AI_URL = "http://127.0.0.1:6000"
+AI_URL = "http://127.0.0.1:6001"
 
 def test_ai_inference():
     print("\n" + "="*60)

@@ -326,7 +326,7 @@ npm --version      # 10.9.3 ✓
 cd ai-service
 python -m venv .venv
 .\.venv\Scripts\pip install -r requirements.txt  ✓
-.\.venv\Scripts\python app.py  # Runs on :6000
+.\.venv\Scripts\python app.py  # Runs on :6001
 
 # Backend Server
 cd server
@@ -416,7 +416,7 @@ The Oral Cancer AI system is a well-architected, fully functional full-stack app
 
 | Service | Port | Status | Health Check |
 |---------|------|--------|--------------|
-| AI Service | 6000 | ✓ Running | `/health` |
+| AI Service | 6001 | ✓ Running | `/health` |
 | API Server | 5000 | ✓ Running | `/api/health` |
 | Frontend | 5173 | ✓ Running | Visual confirmation |
 | MongoDB | 27017 | ✓ Connected | Via API health |

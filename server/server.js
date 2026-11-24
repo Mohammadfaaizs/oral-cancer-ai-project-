@@ -36,7 +36,7 @@ app.use(express.json({ limit: "1mb" }));
 app.get("/api/health", (_, res) => { const database = mongoose.connection.readyState === 1 ? "connected" : "disconnected"; res.status(database === "connected" ? 200 : 503).json({ status: database === "connected" ? "ok" : "degraded", service: "api", database }); });
 app.get("/api/health/deep", async (_, res) => {
   try {
-    const r = await fetch(`${process.env.AI_SERVICE_URL || "http://127.0.0.1:6000"}/health`);
+    const r = await fetch(`${process.env.AI_SERVICE_URL || "http://127.0.0.1:6001"}/health`);
     const ai = await r.json();
     res.status(r.ok ? 200 : 503).json({ status: r.ok ? "ok" : "degraded", api: "ok", ai });
   } catch (e) { res.status(503).json({ status: "degraded", api: "ok", ai: { status: "unreachable", message: e.message } }); }

@@ -32,7 +32,7 @@ Your **Oral Cancer AI** system has been thoroughly tested and is **fully operati
 
 ### Services Verified ✓
 ```
-✓ AI Service (Port 6000)
+✓ AI Service (Port 6001)
   - Image model: LOADED
   - Clinical model: LOADED
   - Both responding with predictions
@@ -288,7 +288,7 @@ python -m venv .venv
 .\.venv\Scripts\activate
 pip install -r requirements.txt
 python app.py
-# Should show: "Serving on 0.0.0.0:6000"
+# Should show: "Serving on 0.0.0.0:6001"
 ```
 
 ### Step 2: Backend Server (Terminal 2)
@@ -312,7 +312,7 @@ npm run dev
 ```
 Frontend:  http://localhost:5173
 API:       http://localhost:5000
-AI:        http://localhost:6000
+AI:        http://localhost:6001
 Login:     admin@example.com / Admin@2026Secure
 ```
 

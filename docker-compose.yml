@@ -16,14 +16,14 @@ services:
     build: ./ai-service
     restart: unless-stopped
     environment:
-      PORT: 6000
+      PORT: 6001
       MODEL_DIR: /app/models
     ports:
-      - "6000:6000"
+      - "6001:6001"
     volumes:
       - ./ai-service/models:/app/models
     healthcheck:
-      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:6000/health', timeout=3)"]
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:6001/health', timeout=3)"]
       interval: 10s
       timeout: 5s
       retries: 10
@@ -43,7 +43,7 @@ services:
       JWT_SECRET: change-this-in-production-to-a-long-random-value
       JWT_EXPIRES_IN: 7d
       CLIENT_ORIGIN: http://localhost:4173
-      AI_SERVICE_URL: http://ai-service:6000
+      AI_SERVICE_URL: http://ai-service:6001
       AI_TIMEOUT_MS: 60000
       UPLOAD_DIR: uploads
     ports:
@@ -64,7 +64,7 @@ services:
         condition: service_healthy
     environment:
       VITE_API_URL: http://localhost:5000/api
-      VITE_AI_URL: http://localhost:6000
+      VITE_AI_URL: http://localhost:6001
     ports:
       - "4173:4173"
 

@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert';
 const base=process.env.API_URL||'http://localhost:5000';
-const ai=process.env.AI_URL||'http://localhost:6000';
+const ai=process.env.AI_URL||'http://localhost:6001';
 async function check(url,name){
   const r=await fetch(url); const t=await r.text(); assert(r.ok,`${name} returned ${r.status}: ${t}`); console.log(`PASS ${name}: ${t}`); return JSON.parse(t);
 }

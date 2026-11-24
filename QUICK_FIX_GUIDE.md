@@ -21,7 +21,7 @@ const formData = new FormData();
 formData.append('image', imageFile);  // ✓ Correct
 // NOT: formData.append('file', imageFile);  // ✗ Wrong
 
-const response = await fetch('http://localhost:6000/predict/image', {
+const response = await fetch('http://localhost:6001/predict/image', {
   method: 'POST',
   body: formData
 });
@@ -127,7 +127,7 @@ const errorHandler = (err, req, res, next) => {
 
 ### All Services Running ✓
 ```
-AI Service (Port 6000):     ✓ HEALTHY
+AI Service (Port 6001):     ✓ HEALTHY
 API Server (Port 5000):     ✓ HEALTHY  
 Frontend (Port 5173):       ✓ RUNNING
 MongoDB:                    ✓ CONNECTED
@@ -189,7 +189,7 @@ patient_data = {
 # Terminal 1: AI Service
 cd ai-service
 .\.venv\Scripts\python app.py
-# Listening on http://127.0.0.1:6000
+# Listening on http://127.0.0.1:6001
 
 # Terminal 2: Backend API
 cd server
